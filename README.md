@@ -1,6 +1,35 @@
-Below are the steps to get your plugin running. You can also find instructions at:
+# Material Swap Style Figma Plugin
 
-  https://www.figma.com/plugin-docs/plugin-quickstart-guide/
+## What does this plugin do?
+
+This plugin automatically swaps all paint style references in your Figma file from the `M3/sys/light/` style path to the corresponding `M3/sys/dark/` style path (or vice versa, depending on configuration). It works on your current selection or the entire page if nothing is selected. It uses the latest Figma async APIs for style access and assignment.
+
+## How does it work?
+
+- Loads all local paint styles.
+- Determines the scope: selected nodes (and their descendants) or the whole page.
+- For each node, checks if it uses a style with the `M3/sys/light/` prefix.
+- If so, finds the corresponding `M3/sys/dark/` style and swaps the reference using async Figma APIs.
+- Notifies you when the swap is complete.
+
+## How to run the plugin
+
+1. **Build the plugin**  
+   Make sure you have run the TypeScript build step (see below).
+
+2. **In Figma:**  
+   - Go to the Figma desktop/web app.
+   - Open the file you want to use the plugin in.
+   - Go to `Menu > Plugins > Development > Import plugin from manifest...`
+   - Select the `manifest.json` in this directory.
+   - Run the plugin from `Menu > Plugins > Development > [Your Plugin Name]`.
+
+3. **What happens:**  
+   - If you have nodes selected, only those (and their descendants) will be processed.
+   - If nothing is selected, the entire page will be processed.
+   - The plugin will notify you when the swap is complete.
+
+## Development
 
 This plugin template uses Typescript and NPM, two standard tools in creating JavaScript applications.
 
