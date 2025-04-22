@@ -1,16 +1,23 @@
 {
   "name": "Material-Swap-Style",
   "version": "1.0.0",
-  "description": "Your Figma Plugin",
-  "main": "code.js",
+  "description": "Material Swap Style - Figma Plugin for swapping style paths",
+  "author": "Salem Aljebaly",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/salemaljebaly"
+  },
+  "main": "dist/code.js",
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
     "lint": "eslint --ext .ts,.tsx --ignore-pattern node_modules .",
     "lint:fix": "eslint --ext .ts,.tsx --ignore-pattern node_modules --fix .",
     "watch": "npm run build -- --watch"
   },
-  "author": "",
-  "license": "",
+  "license": "MIT",
   "devDependencies": {
     "@figma/eslint-plugin-figma-plugins": "*",
     "@figma/plugin-typings": "*",

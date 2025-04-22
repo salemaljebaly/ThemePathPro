@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Material Style Swap</title>
+  <style>
+    :root {
+      --primary-color: #4F46E5;
+      --hover-color: #4338CA;
+      --text-color: #111827;
+      --border-color: #E5E7EB;
+      --bg-color: #F9FAFB;
+      --error-color: #EF4444;
+      --warning-color: #F59E0B;
+      --success-color: #10B981;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-color);
+      margin: 0;
+      padding: 16px;
+      font-size: 14px;
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-sizing: border-box;
+      background-color: var(--bg-color);
+      max-width: 360px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    h2 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 16px 0;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .logo {
+      width: 32px;
+      height: 32px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background-color: white;
+      padding: 16px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    input[type="text"] {
+      padding: 8px 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border-color 0.15s;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    button {
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    button.primary {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    button.primary:hover {
+      background-color: var(--hover-color);
+    }
+
+    button.secondary {
+      background-color: white;
+      border: 1px solid var(--border-color);
+    }
+
+    button.secondary:hover {
+      background-color: var(--bg-color);
+    }
+
+    .alert {
+      display: none;
+      padding: 12px 16px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      margin-bottom: 8px;
+    }
+
+    .alert.visible {
+      display: block;
+    }
+
+    .alert.error {
+      background-color: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid var(--error-color);
+      color: #991B1B;
+    }
+
+    .alert.warning {
+      background-color: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--warning-color);
+      color: #92400E;
+    }
+
+    .alert.success {
+      background-color: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--success-color);
+      color: #065F46;
+    }
+
+    .swap-info {
+      display: none;
+      padding: 16px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .swap-info.visible {
+      display: block;
+    }
+
+    .swap-count {
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+
+    .examples {
+      font-size: 13px;
+      color: #6B7280;
+      margin-top: 4px;
+    }
+
+    .footer {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #6B7280;
+      text-align: center;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .error-text {
+      color: var(--error-color);
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="data:image/svg+xml;charset=utf8,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' rx='8' fill='%234F46E5'/%3E%3Cpath d='M16 6L25 11.5V20.5L16 26L7 20.5V11.5L16 6Z' stroke='white' stroke-width='2' stroke-linejoin='round'/%3E%3Cpath d='M16 6L7 11.5M16 6L25 11.5' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M16 26V16M16 16L25 11.5M16 16L7 11.5' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M21 14L21 19.5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M11 14L11 19.5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" alt="Material Swap Style Logo" class="logo">
+    <h2>Material Style Swap</h2>
+  </div>
+
+  <div id="errorAlert" class="alert error">
+    <span id="errorMessage"></span>
+  </div>
+  
+  <div id="warningAlert" class="alert warning">
+    <span id="warningMessage"></span>
+  </div>
+  
+  <div id="successAlert" class="alert success">
+    <span id="successMessage"></span>
+  </div>
+
+  <div class="form-group">
+    <div class="input-group">
+      <label for="sourcePrefix">Source Path Prefix</label>
+      <input type="text" id="sourcePrefix" placeholder="e.g., M3/sys/dark/" value="M3/sys/dark/">
+      <div class="examples">Example: M3/sys/dark/</div>
+    </div>
+    
+    <div class="input-group">
+      <label for="targetPrefix">Target Path Prefix</label>
+      <input type="text" id="targetPrefix" placeholder="e.g., M3/sys/light/" value="M3/sys/light/">
+      <div class="examples">Example: M3/sys/light/</div>
+    </div>
+
+    <div class="action-buttons">
+      <button id="swapButton" class="primary">Swap Styles</button>
+      <button id="cancelButton" class="secondary">Cancel</button>
+    </div>
+  </div>
+
+  <div id="swapInfo" class="swap-info">
+    <p>Successfully swapped <span id="swapCount" class="swap-count">0</span> style binding(s).</p>
+    <p id="errorCountText" style="display: none;">Found <span id="errorCount" class="error-text">0</span> warnings/errors. Check console for details.</p>
+  </div>
+
+  <div class="footer">
+    Developed by <a href="https://github.com/salemaljebaly" target="_blank">Salem Aljebaly</a>
+  </div>
+
+  <script>
+    // Show alert with message
+    function showAlert(type, message) {
+      const alertElement = document.getElementById(`${type}Alert`);
+      const messageElement = document.getElementById(`${type}Message`);
+      
+      if (alertElement && messageElement) {
+        messageElement.textContent = message;
+        alertElement.classList.add('visible');
+        
+        // Auto-hide success messages after 5 seconds
+        if (type === 'success') {
+          setTimeout(() => {
+            alertElement.classList.remove('visible');
+          }, 5000);
+        }
+      }
+    }
+    
+    // Hide all alerts
+    function hideAllAlerts() {
+      document.getElementById('errorAlert').classList.remove('visible');
+      document.getElementById('warningAlert').classList.remove('visible');
+      document.getElementById('successAlert').classList.remove('visible');
+    }
+    
+    // Validate path format
+    function validatePath(path) {
+      if (!path || path.trim() === '') {
+        return false;
+      }
+      
+      return true;
+    }
+
+    document.getElementById('swapButton').onclick = () => {
+      hideAllAlerts();
+      
+      const sourcePrefix = document.getElementById('sourcePrefix').value;
+      const targetPrefix = document.getElementById('targetPrefix').value;
+      
+      // Validate inputs
+      if (!validatePath(sourcePrefix)) {
+        showAlert('error', 'Please enter a valid source path prefix');
+        return;
+      }
+      
+      if (!validatePath(targetPrefix)) {
+        showAlert('error', 'Please enter a valid target path prefix');
+        return;
+      }
+      
+      // Disable button to prevent multiple clicks
+      document.getElementById('swapButton').disabled = true;
+      document.getElementById('swapButton').textContent = 'Processing...';
+      
+      // Hide previous results
+      document.getElementById('swapInfo').classList.remove('visible');
+      
+      // Send message to plugin code
+      parent.postMessage({ 
+        pluginMessage: { 
+          type: 'swap-styles',
+          sourcePrefix,
+          targetPrefix
+        } 
+      }, '*');
+    };
+
+    document.getElementById('cancelButton').onclick = () => {
+      parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*');
+    };
+
+    // Listen for messages from the plugin code
+    window.onmessage = (event) => {
+      const message = event.data.pluginMessage;
+      
+      // Re-enable the swap button
+      document.getElementById('swapButton').disabled = false;
+      document.getElementById('swapButton').textContent = 'Swap Styles';
+      
+      if (message.type === 'swap-complete') {
+        const swapInfo = document.getElementById('swapInfo');
+        const swapCount = document.getElementById('swapCount');
+        const errorCount = document.getElementById('errorCount');
+        const errorCountText = document.getElementById('errorCountText');
+        
+        swapCount.textContent = message.count;
+        
+        if (message.errorCount > 0) {
+          errorCount.textContent = message.errorCount;
+          errorCountText.style.display = 'block';
+        } else {
+          errorCountText.style.display = 'none';
+        }
+        
+        swapInfo.classList.add('visible');
+        
+        if (message.count > 0) {
+          showAlert('success', `Successfully swapped ${message.count} style binding(s).`);
+        }
+      } else if (message.type === 'error') {
+        showAlert('error', message.message);
+      } else if (message.type === 'warning') {
+        showAlert('warning', message.message);
+      } else if (message.type === 'path-corrected') {
+        // Update input fields with corrected paths
+        document.getElementById('sourcePrefix').value = message.sourcePrefix;
+        document.getElementById('targetPrefix').value = message.targetPrefix;
+        
+        showAlert('warning', 'Path format has been corrected. Spaces and double slashes were removed.');
+      }
+    };
+  </script>
+</body>
+</html>
