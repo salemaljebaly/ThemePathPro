@@ -144,8 +144,9 @@ async function swapStyles(sourcePrefix: string, targetPrefix: string) {
     let errorCount = 0;
     for (const node of nodes) {
       for (const prop of ['fillStyleId', 'strokeStyleId'] as const) {
-        const styleId = (node as any)[prop] as string | undefined;
-        if (!styleId) continue;
+        const styleId = (node as any)[prop];
+        // Ensure styleId is a non-empty string
+        if (typeof styleId !== 'string' || !styleId) continue;
 
         try {
           // Use the async version

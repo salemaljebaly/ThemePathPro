@@ -60,9 +60,9 @@ ThemePathPro/
 ├── dist/                      # Compiled JavaScript files (used by Figma)
 ├── src/                       # Source code
 │   ├── assets/                # Assets like logo
-│   ├── ui/                    # UI files
-│   ├── utils/                 # Utility functions
-│   └── code.ts                # Main plugin code
+│   ├── ui/                    # UI dir
+│       └── ui.html            # UI file
+|   ├── code.ts                # Main plugin code
 ├── manifest.json              # Points to dist/code.js
 ├── package.json               # Dependency management
 └── tsconfig.json              # TypeScript configuration
