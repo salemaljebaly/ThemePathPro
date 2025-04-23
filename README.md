@@ -1,6 +1,6 @@
 # ThemePathPro
 
-![ThemePathPro Logo](src/assets/logo.svg)
+![ThemePathPro Cover](src/assets/ThemePathPro.jpg)
 
 ## What does this plugin do?
 
