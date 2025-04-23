@@ -1,10 +1,10 @@
-# Material Swap Style Figma Plugin
+# ThemePathPro
 
-![Material Swap Style Logo](src/assets/logo.svg)
+![ThemePathPro Logo](src/assets/logo.svg)
 
 ## What does this plugin do?
 
-This plugin allows you to easily swap style paths in your Figma file. It comes with a modern UI that lets you specify custom source and target style paths (e.g., from `M3/sys/dark/` to `M3/sys/light/` or any other path). It works on your current selection or the entire page if nothing is selected, and uses the latest Figma async APIs for style access and assignment.
+ThemePathPro automates style path transformation in your Figma designs. Instantly swap all references from one path to another (e.g., 'M3/sys/dark/' to 'M3/sys/light/'), saving hours of manual work.
 
 ## Features
 
@@ -14,6 +14,15 @@ This plugin allows you to easily swap style paths in your Figma file. It comes w
 - **Path Validation**: Automatically corrects malformed paths (e.g., double slashes)
 - **Selection Support**: Works on selected elements or the entire page
 - **Real-time Feedback**: Shows success/error counts and messages
+- **Free and Open Source**: Available for everyone to use and modify
+
+## Problem & Solution
+
+**Problem:** 
+Material Design workflows in Figma require tedious manual reassignment when switching between theme variations. The Material Theme Builder creates styles but offers no easy way to switch elements between themes.
+
+**Solution:**
+ThemePathPro bridges this critical gap, helping designers quickly switch between theme variations without manual reassignment.
 
 ## How to use the plugin
 
@@ -40,26 +49,22 @@ This plugin allows you to easily swap style paths in your Figma file. It comes w
    - Open the file you want to use the plugin in
    - Go to `Menu > Plugins > Development > Import plugin from manifest...`
    - Select the `manifest.json` in this directory
-   - Run the plugin from `Menu > Plugins > Development > Material Swap Style`
+   - Run the plugin from `Menu > Plugins > Development > ThemePathPro`
 
 ## Project Structure
 
-The plugin now follows a more organized structure:
+The plugin follows a modular structure:
 
 ```
-Material Swap Style/
-├── dist/                      # Compiled JavaScript files
+ThemePathPro/
+├── dist/                      # Compiled JavaScript files (used by Figma)
 ├── src/                       # Source code
-│   ├── assets/                # Assets like images and icons
-│   │   └── logo.svg           # Plugin logo
-│   ├── ui/                    # UI-related files
-│   │   └── ui.html            # Main UI interface
+│   ├── assets/                # Assets like logo
+│   ├── ui/                    # UI files
 │   ├── utils/                 # Utility functions
-│   │   └── pathUtils.ts       # Path validation utilities
-│   ├── code.ts                # Entry point
-│   └── main.ts                # Main plugin logic
-├── manifest.json              # Plugin manifest
-├── package.json               # NPM package configuration
+│   └── code.ts                # Main plugin code
+├── manifest.json              # Points to dist/code.js
+├── package.json               # Dependency management
 └── tsconfig.json              # TypeScript configuration
 ```
 

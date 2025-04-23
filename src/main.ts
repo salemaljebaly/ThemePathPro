@@ -1,5 +1,5 @@
 /**
- * Material Swap Style - Figma Plugin
+ * ThemePathPro - Figma Plugin
  * @author Salem Aljebaly
  * @github https://github.com/salemaljebaly
  */
