@@ -104,4 +104,3 @@ This will create the compiled JavaScript files in the `dist` directory.
 ## Credits
 
 - Developer: [Salem Aljebaly](https://github.com/salemaljebaly)
-- Uses Figma Plugin API
