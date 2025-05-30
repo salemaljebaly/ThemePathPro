@@ -104,3 +104,4 @@ This will create the compiled JavaScript files in the `dist` directory.
 ## Credits
 
 - Developer: [Salem Aljebaly](https://github.com/salemaljebaly)
+- Plugin Link: [ThemePathPro](https://www.figma.com/community/plugin/1496660427618574399/themepathpro)
